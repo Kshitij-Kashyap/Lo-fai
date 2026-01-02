@@ -1,0 +1,5 @@
+{
+  "name": "Lo-fAI - Generative Beats",
+  "description": "A sophisticated AI-powered Lo-Fi music player that uses Gemini to conceptualize track vibes and synthesize procedural beats for study, work, or relaxation.",
+  "requestFramePermissions": []
+}
