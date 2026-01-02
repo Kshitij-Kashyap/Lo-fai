@@ -1,4 +1,4 @@
-# Lo-fAI 🎵
+# [Lo-fAI 🎵](https://kshitij-kashyap.github.io/Lo-fai/)
 
 A generative lo-fi beat producer powered by Google's Gemini AI. Describe a vibe and let AI create unique procedural beats with customizable ambient sounds.
 
