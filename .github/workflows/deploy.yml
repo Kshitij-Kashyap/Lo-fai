@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - run: npm install
-      - run: npm run build
-      - run: ls -la dist/  # Debug: check if dist exists
+      - run: npm ci          # faster & cleaner than npm install
+      - run: npm run build   # produces dist/
+      - run: ls -la dist/    # sanity check
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
