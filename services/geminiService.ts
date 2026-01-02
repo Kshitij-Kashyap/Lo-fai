@@ -2,9 +2,18 @@
 import { GoogleGenAI, Type, Modality } from "@google/genai";
 import { TrackMetadata, MoodPreset } from "../types";
 
+const getApiKey = () => {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return window.localStorage.getItem('gemini_api_key') || process.env.API_KEY || '';
+    }
+  } catch (e) {}
+  return process.env.API_KEY || '';
+};
+
 export const generateTrackConcept = async (prompt: string, preset?: MoodPreset): Promise<TrackMetadata> => {
-  // Create instance right before use to get updated process.env.API_KEY
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  // Create instance right before use to get updated API key from localStorage
+  const ai = new GoogleGenAI({ apiKey: getApiKey() });
   const model = 'gemini-3-flash-preview';
   
   const systemInstruction = `
@@ -58,7 +67,7 @@ export const generateTrackConcept = async (prompt: string, preset?: MoodPreset):
 };
 
 export const generateVoiceIntro = async (text: string): Promise<string> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  const ai = new GoogleGenAI({ apiKey: getApiKey() });
   const model = 'gemini-2.5-flash-preview-tts';
   const response = await ai.models.generateContent({
     model,
