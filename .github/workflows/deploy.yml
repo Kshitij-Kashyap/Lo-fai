@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: '18'
-      - run: npm ci          # faster & cleaner than npm install
-      - run: npm run build   # produces dist/
-      - run: ls -la dist/    # sanity check
+          bun-version: latest
+      - run: bun install
+      - run: bun run build
+      - run: ls -la dist/
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
